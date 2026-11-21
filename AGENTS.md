@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Vehicle data, price formatting and category filtering live in `src/lib/vehicles.ts`; UI reads from there only, so catalog changes stay in one place (covered by `src/test/vehicles.test.ts`).
+- Card photos are local generated assets in `src/assets/` rendered through `VehicleImage`, which shows a styled fallback surface on load failure instead of a broken image.
+- All animation (entrance, hover, expand, scroll reveal) is CSS in `src/styles.css` utilities, with a `prefers-reduced-motion` override; avoid JS animation libraries to keep it lag-free.
